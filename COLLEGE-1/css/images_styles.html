@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Image Styles Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+
+    h2 {
+      margin-top: 60px;
+    }
+
+    .section {
+      margin-bottom: 60px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    /* Rounded corners (8px radius) */
+    .rounded-8 {
+      border-radius: 8px;
+      width: 250px;
+      height: auto;
+    }
+
+    /* Circular image */
+    .circle {
+      border-radius: 50%;
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    /* Thumbnail image */
+    .thumbnail {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px;
+      width: 150px;
+    }
+
+    /* Center image */
+    .centered {
+      display: block;
+      margin: 20px auto;
+      width: 300px;
+    }
+
+    /* Polaroid card */
+    .polaroid {
+      width: 250px;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .polaroid img {
+      width: 100%;
+      display: block;
+    }
+
+    .polaroid .container {
+      text-align: center;
+      padding: 10px;
+    }
+
+    /* Filters grid */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .filters img {
+      width: 200px;
+      height: auto;
+    }
+
+    .blur { filter: blur(4px); }
+    .brightness { filter: brightness(250%); }
+    .contrast { filter: contrast(180%); }
+    .grayscale { filter: grayscale(100%); }
+    .huerotate { filter: hue-rotate(180deg); }
+    .invert { filter: invert(100%); }
+    .opacity { filter: opacity(50%); }
+    .saturate { filter: saturate(7); }
+    .sepia { filter: sepia(100%); }
+    .shadow { filter: drop-shadow(8px 8px 10px green); }
+
+    /* Overlay effect */
+    .overlay-container {
+      position: relative;
+      width: 250px;
+    }
+
+    .overlay-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      right: 0;
+      background-color: #008CBA;
+      overflow: hidden;
+      width: 100%;
+      height: 0;
+      transition: .5s ease;
+    }
+
+    .overlay-container:hover .overlay {
+      bottom: 0;
+      height: 100%;
+    }
+
+    .overlay .text {
+      color: white;
+      font-size: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    /* Transformations */
+    .transformations {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .transformations img {
+      width: 200px;
+      height: auto;
+      transition: transform 0.6s ease;
+    }
+
+    .flip-horizontal { transform: scaleX(-1); }
+    .flip-vertical { transform: scaleY(-1); }
+    .rotate { transform: rotate(20deg); }
+    .scale { transform: scale(1.3); }
+    .skew { transform: skewX(20deg); }
+
+    /* 3D Rotate on Hover */
+    .rotate3d {
+      perspective: 800px;
+    }
+    .rotate3d img {
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+    }
+    .rotate3d:hover img {
+      transform: rotateY(180deg);
+    }
+
+  </style>
+</head>
+<body>
+
+  <h2>Rounded Image</h2>
+  <div class="section">
+    <img src="paris.jpg" alt="Paris" class="rounded-8">
+  </div>
+
+  <h2>Rounded Image (Circle)</h2>
+  <div class="section">
+    <img src="paris.jpg" alt="Paris" class="circle">
+  </div>
+
+  <h2>Thumbnail Image</h2>
+  <div class="section">
+    <img src="paris.jpg" alt="Paris" class="thumbnail">
+  </div>
+
+  <h2>Center an Image</h2>
+  <p>To center an image, set left and right margin to auto, and make it into a block element.</p>
+  <img src="paris.jpg" alt="Paris" class="centered">
+
+  <h2>Responsive Polaroid Images / Cards</h2>
+  <div class="section">
+    <div class="polaroid">
+      <img src="paris.jpg" alt="Paris">
+      <div class="container">
+        <p>Cinque Terre</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Image Filters</h2>
+  <div class="filters">
+    <img src="paris.jpg" alt="Normal">
+    <img src="paris.jpg" class="blur" alt="Blur">
+    <img src="paris.jpg" class="brightness" alt="Brightness">
+    <img src="paris.jpg" class="contrast" alt="Contrast">
+    <img src="paris.jpg" class="grayscale" alt="Grayscale">
+    <img src="paris.jpg" class="huerotate" alt="Hue Rotate">
+    <img src="paris.jpg" class="invert" alt="Invert">
+    <img src="paris.jpg" class="opacity" alt="Opacity">
+    <img src="paris.jpg" class="saturate" alt="Saturate">
+    <img src="paris.jpg" class="sepia" alt="Sepia">
+    <img src="paris.jpg" class="shadow" alt="Shadow">
+  </div>
+
+  <h2>Slide in Overlay from the Top</h2>
+  <div class="section">
+    <div class="overlay-container">
+      <img src="paris.jpg" alt="Paris">
+      <div class="overlay">
+        <div class="text">Hello World</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Image Transformations</h2>
+  <div class="transformations">
+    <img src="paris.jpg" alt="Flip Horizontal" class="flip-horizontal">
+    <img src="paris.jpg" alt="Flip Vertical" class="flip-vertical">
+    <img src="paris.jpg" alt="Rotate" class="rotate">
+    <img src="paris.jpg" alt="Scale" class="scale">
+    <img src="paris.jpg" alt="Skew" class="skew">
+    <div class="rotate3d">
+      <img src="paris.jpg" alt="3D Rotate on Hover">
+    </div>
+  </div>
+
+</body>
+</html>
